@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129212947) do
+ActiveRecord::Schema.define(version: 20151129214848) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "line_1_building"
+    t.string   "line_2_street"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
+    t.string   "country"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "customer_addresses", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "address_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "customer_addresses", ["address_id"], name: "index_customer_addresses_on_address_id"
+  add_index "customer_addresses", ["customer_id"], name: "index_customer_addresses_on_customer_id"
 
   create_table "customers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,6 +54,12 @@ ActiveRecord::Schema.define(version: 20151129212947) do
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+
+  create_table "product_types", force: :cascade do |t|
+    t.string   "product_type_descrp"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.integer  "producttypescode_id"
