@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   resources :product_types
   resources :customer_addresses
   resources :addresses

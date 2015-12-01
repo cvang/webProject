@@ -5,6 +5,12 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @images = Image.all
+    @p_images = Array.new
+    @images.each do |image|
+        @p_images.push(image)
+    end
+    
   end
 
   # GET /products/1
@@ -15,6 +21,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product.images.new
   end
 
   # GET /products/1/edit
