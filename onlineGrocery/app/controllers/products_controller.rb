@@ -5,13 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @images = Image.all
-    @p_images = Array.new
-    @images.each do |image|
-        @p_images.push(image)
-    end
-    @p_images = @p_images.sort
-    
   end
 
   # GET /products/1
@@ -22,7 +15,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @product.images.new
   end
 
   # GET /products/1/edit
@@ -77,6 +69,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:producttypescode_id, :price, :product_detail)
+      params.require(:product).permit(:name, :product_type, :price, :detail)
     end
 end

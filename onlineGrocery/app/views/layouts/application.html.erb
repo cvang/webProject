@@ -8,19 +8,6 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<div id="customer_nav">
-    <% if customer_signed_in? %>
-        Signed in as <%= current_customer.email %>. Not you?
-        <%= link_to "Sign out", destroy_customer_session_path, method: :delete %>
-    <% else %>
-        <%= link_to "Sign up", new_customer_registration_path %> or
-        <%= link_to "Sign in", new_customer_session_path %>
-    <% end %>
-</div>
-
 <%= yield %>
 
 </body>
