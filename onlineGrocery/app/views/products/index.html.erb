@@ -13,7 +13,8 @@
 <%= current_user.last_name %><br>
 <%= current_user.email%><br>
 <%= current_user.phone %>
-<%= link_to "Change Account", edit_user_registration_path %>
+<%= link_to "Change Account", edit_user_registration_path %><br>
+<%= link_to "Account" , user_path(current_user) %>
 <br>
 
 <table>
