@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<style>
+    .something{
+        display: inline-block;
+        margin: 10px;
+        margin-right: 20px;
+    }
+</style>
 <h1>Listing Products</h1>
 
 <%= current_user.id %><br>
@@ -10,10 +16,8 @@
 <%= link_to "Change Account", edit_user_registration_path %>
 <br>
 
-<% @images.each do |image| %>
-    <%= image_tag image.filename, :size => "100x100" %><br>
-<% end %>
 <table>
+<!--
   <thead>
     <tr>
       <th>Name</th>
@@ -23,19 +27,30 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+  -->
 
   <tbody>
+  <% @images.each do |image| %>
     <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.product_type %></td>
-        <td><%= product.price %></td>
-        <td><%= product.detail %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% if image.id == product.id && image.private == false %>
+        <tr>
+        <div class="something">
+        <%= product.name %><br>
+            <%= image_tag image.filename, :size => "100x100" %><br>
+            <!-- < %= product.product_type %> -->
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <%= "$ #{product.price}" %><br>
+            <!-- < %= product.detail %> -->
+            <!--< %= link_to 'Show', product %> -->
+            <% if current_user.admin == true %>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </div>
+        </tr>
+        <% end %>
     <% end %>
+<% end %>
   </tbody>
 </table>
 
