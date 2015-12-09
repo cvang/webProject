@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201190506) do
+ActiveRecord::Schema.define(version: 20151209102317) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "line_1_building"
-    t.string   "line_2_street"
+    t.string   "line_2_number_street"
     t.string   "city"
     t.string   "state"
-    t.integer  "zipcode"
     t.string   "country"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "customer_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  add_index "addresses", ["customer_id"], name: "index_addresses_on_customer_id"
 
   create_table "customer_addresses", force: :cascade do |t|
     t.integer  "customer_id"

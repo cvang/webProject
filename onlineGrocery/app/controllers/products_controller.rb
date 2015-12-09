@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     @images.each do |image|
         @p_images.push(image)
     end
+    @p_images = @p_images.sort
     
   end
 
