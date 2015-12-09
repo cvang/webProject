@@ -6,6 +6,13 @@
 <%= current_user.name %><br>
 <%= current_user.last_name %><br>
 <%= current_user.email%><br>
+<%= current_user.phone %>
+<%= link_to "Change Account", edit_user_registration_path %>
+<br>
+
+<% @images.each do |image| %>
+    <%= image_tag image.filename, :size => "100x100" %><br>
+<% end %>
 <table>
   <thead>
     <tr>
