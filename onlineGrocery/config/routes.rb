@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  #match '/users/:id', :to => "users#show", :as => :user_show, :via => :get
+  resources :user_addresses
+  resources :addresses
   resources :images
   devise_for :users
   resources :users, :only => [:show, :edit, :update]
