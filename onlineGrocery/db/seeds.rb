@@ -65,3 +65,8 @@ images = Image.create([
     {filename: "zucchini.jpg", private: "f", product_id: 21}
 
 ])
+
+address = Address.create([
+    {line_1_building: "50", line_2_street: "something ave", city: "Chico", country: "US", user_id: 1, state: "CA", zipcode: 95926}
+
+])

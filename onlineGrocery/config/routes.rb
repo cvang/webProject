@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :user_addresses
-  resources :addresses
   resources :images
   devise_for :users
-  resources :users, :only => [:show, :edit, :update]
+  resources :users, :only => [:show, :edit, :update, :create] do 
+      resources :addresses, shallow: true
+  end
   resources :products
     root "products#index"
 end
