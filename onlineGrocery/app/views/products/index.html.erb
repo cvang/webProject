@@ -31,13 +31,18 @@
         <% if image.id == product.id && image.private == false %>
         <tr>
         <div class="something">
-        <%= product.name %><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b><%= product.name %></b><br>
             <%= image_tag image.filename, :size => "100x100" %><br>
             <!-- < %= product.product_type %> -->
             &nbsp;&nbsp;&nbsp;&nbsp;
             <%= "$ #{product.price}" %><br>
             <!-- < %= product.detail %> -->
             <!--< %= link_to 'Show', product %> -->
+            <% if current_user.admin == false %>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- < %= link_to "Add" %> -->
+            <% end %>
             <% if current_user.admin == true %>
             <%= link_to 'Edit', edit_product_path(product) %>
             <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
