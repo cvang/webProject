@@ -1,0 +1,18 @@
+#! /usr/bin/env ruby
+#Chue Vang           refactored codes
+puts "Files with names that matches <#{ARGV[0]}>\n"
+new = `find . | grep -i "#{ARGV[0]}"`.split.map!{ |arg| if arg =~ /(\.rb$)|(\.erb$)|(\.js$)|(\.css$)|(\.html$)|(\.yml$)|(\.txt$)/; puts "  #{arg}"; end}
+files = `grep -Ril "#{ARGV[0]}" .`.split.map!{|ok| if ok =~ /(\.rb$)|(\.erb$)|(\.js$)|(\.css$)|(\.html$)|(\.yml$)|(\.txt$)/; files = ok;end}.compact!
+puts "**************************************************\nFiles with content that matches <#{ARGV[0]}>"
+files = files.sort
+counter = files.size
+files.each do |cur|
+    if(cur =~ /(\.rb$)|(\.erb$)|(\.js$)|(\.css$)|(\.html$)|(\.yml$)|(\.txt$)/)
+        puts cur
+        counter = counter - 1
+        g = `grep -i -n "#{ARGV[0]}" "#{cur}"`.split("\n").map{ |mo| puts "  #{mo}"}
+        if(counter != 0)
+            puts "--------------------------------------------------"
+        end
+    end
+end
