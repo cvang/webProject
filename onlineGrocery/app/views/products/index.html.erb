@@ -41,6 +41,9 @@
             <!--< %= link_to 'Show', product %> -->
             <% if current_user.admin == false %>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!--%= render file: '/products/show' %-->
+                <%= link_to "Add", product_path(product) %>
+                <!-- < %= render 'carts/form' %> -->
                 <!-- < %= link_to "Add" %> -->
             <% end %>
             <% if current_user.admin == true %>

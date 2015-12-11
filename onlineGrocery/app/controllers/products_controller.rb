@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+      @cart = @product.carts.new
   end
 
   # GET /products/new
@@ -27,6 +28,9 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.carts.each do |cart|
+        car.user_id = current_user.id
+    end
 
     respond_to do |format|
       if @product.save
