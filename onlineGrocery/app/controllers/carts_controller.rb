@@ -10,6 +10,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+      @carts = Cart.all
   end
 
   # GET /carts/new
@@ -28,14 +29,20 @@ class CartsController < ApplicationController
     @product = Product.find params[:product_id]
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
+    @something = @product.id
+    @cart.check(@something)
+    @cart.quantity = 1
+    @existing_cart = Cart.find_by(product_id: @product.id)
 
-    respond_to do |format|
+    if @existing_cart
+      @existing_cart.quantity += 1
+      @existing_cart.save
+      redirect_to products_url, notice: 'Item added to cart.'
+    else
         if @cart.save
-        format.html { redirect_to products_url, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
+        redirect_to products_url, notice: 'Item added to cart.'
       else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+        redirect_to products_url, notice: 'Could not add item to cart.'
       end
     end
   end

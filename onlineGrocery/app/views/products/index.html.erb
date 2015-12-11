@@ -51,8 +51,12 @@
             </div><center>
             <% end %>
             <% if current_user.admin == true %>
-            <%= link_to 'Edit', edit_product_path(product) %>
-            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <div class="btn-group" role="group" aria-label="...">
+                        <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-primary" %>
+                </div>
+                <div class="btn-group" role="group" aria-label="...">
+                        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-primary"%>
+                </div>
         <% end %>
         </div>
         </tr>
