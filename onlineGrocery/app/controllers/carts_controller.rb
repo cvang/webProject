@@ -10,6 +10,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+      @carts = Cart.all
   end
 
   # GET /carts/new
@@ -24,16 +25,19 @@ class CartsController < ApplicationController
 
   def check_product
     @carts = Cart.all
+    @something = 1
 
+    @okay = false
     @carts.each do |cart|
-      @okay =  cart.product.name
       if @product.id == cart.product.id
-        puts "**************************"
-        cart.quantity = cat.quantity + 1
+          @something = @something + 1
+#          @cart.quantity = @something
+          cart.update_attribute(:quantity, @something)
+          @okay = true 
+          break;
       end
-      break;
     end
-    return @okay
+    return  @okay
   end
   # POST /carts
   # POST /carts.json
@@ -41,9 +45,8 @@ class CartsController < ApplicationController
     @product = Product.find params[:product_id]
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
-    @something = check_product
-    puts "---------------------->>>>"
-    puts @something
+    @some = check_product
+
     respond_to do |format|
         if @cart.save
         format.html { redirect_to products_url, notice: 'Cart was successfully created.' }
@@ -76,7 +79,7 @@ class CartsController < ApplicationController
     @cart.destroy
     respond_to do |format|
       #format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
-      format.html { redirect_to products_url(@cart.product), notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to product_carts_url(@cart.product), notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
