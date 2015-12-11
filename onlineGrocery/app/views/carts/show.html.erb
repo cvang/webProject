@@ -23,25 +23,7 @@
         </tr>
     </thead>
     <tbody>
-<% @carts.each do |cart| %>
-    <tr>
-        <td> <%= cart.product.name %></td>
-        <td> <%= cart.quantity %></td>
-        <td><%= cart.product.id %></td>
-        <td><%= cart.id %></td>
-        <!-- <%= cart.update_attribute(:quantity, 1) %> -->
-    </tr>
-<% end %>
     </tbody>
 </table>
-<%= form_for([@product, @cart]) do |f| %>
-    <%= f.label :product_id %><br>
-    <%= f.number_field :product_id %><br>
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %><br>
-    <%= f.label :qauntity %><br>
-    <%= f.number_field :quantity, :size => 10, :max => 99 %><br>
-    <%= f.submit %>
-<% end %>
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', product_carts_path(@cart.products)  %>

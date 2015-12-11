@@ -10,7 +10,6 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-      @carts = Cart.all
   end
 
   # GET /carts/new
@@ -23,29 +22,12 @@ class CartsController < ApplicationController
   def edit
   end
 
-  def check_product
-    @carts = Cart.all
-    @something = 1
-
-    @okay = false
-    @carts.each do |cart|
-      if @product.id == cart.product.id
-          @something = @something + 1
-#          @cart.quantity = @something
-          cart.update_attribute(:quantity, @something)
-          @okay = true 
-          break;
-      end
-    end
-    return  @okay
-  end
   # POST /carts
   # POST /carts.json
   def create
     @product = Product.find params[:product_id]
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
-    @some = check_product
 
     respond_to do |format|
         if @cart.save

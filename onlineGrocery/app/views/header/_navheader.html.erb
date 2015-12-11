@@ -59,7 +59,7 @@
                         <% end %>
                         <li>
                             <% if user_signed_in? %>
-                            <%= link_to "Cart", cart_path(current_user) %>
+                            <%= link_to "Cart", product_carts_path(current_user) %>
                         <% end %>
                         </li>
                <!-- <li class="dropdown">

@@ -3,6 +3,8 @@
     .something{
         display: inline-block;
         margin: 10px;
+        box-shadow: 0 0 5px #999;
+        border: 6px solid #fff;
         margin-right: 20px;
     }
 </style>
@@ -32,19 +34,21 @@
         <tr>
         <div class="something">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <b><%= product.name %></b><br>
+            <center><b><%= product.name %></b><center><br>
             <%= image_tag image.filename, :size => "100x100" %><br>
             <!-- < %= product.product_type %> -->
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <%= "$ #{product.price}" %><br>
+            <center><%= "$ #{product.price}" %><br><center>
             <!-- < %= product.detail %> -->
             <!--< %= link_to 'Show', product %> -->
             <% if current_user.admin == false %>
             &nbsp;&nbsp;&nbsp;&nbsp;
                 <!--%= render file: '/products/show' %-->
-                <%= link_to "Add to Cart", product_path(product) %>
+                <center><div class="btn-group" role="group" aria-label="...">
+                <%= link_to "Add to Cart", product_path(product), :class => "btn btn-primary" %>
                 <!-- < %= render 'carts/form' %> -->
                 <!-- < %= link_to "Add" %> -->
+            </div><center>
             <% end %>
             <% if current_user.admin == true %>
             <%= link_to 'Edit', edit_product_path(product) %>
