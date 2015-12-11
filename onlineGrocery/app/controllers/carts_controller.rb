@@ -22,13 +22,28 @@ class CartsController < ApplicationController
   def edit
   end
 
+  def check_product
+    @carts = Cart.all
+
+    @carts.each do |cart|
+      @okay =  cart.product.name
+      if @product.id == cart.product.id
+        puts "**************************"
+        cart.quantity = cat.quantity + 1
+      end
+      break;
+    end
+    return @okay
+  end
   # POST /carts
   # POST /carts.json
   def create
     @product = Product.find params[:product_id]
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
-
+    @something = check_product
+    puts "---------------------->>>>"
+    puts @something
     respond_to do |format|
         if @cart.save
         format.html { redirect_to products_url, notice: 'Cart was successfully created.' }

@@ -14,12 +14,14 @@
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
+          <% if current_user.id == cart.user_id %>
         <td><%= cart.product.name %></td>
         <td><%= cart.user.name %></td>
         <td><%= cart.quantity %></td>
         <td><%= link_to 'Show', cart %></td>
         <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
         <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
       </tr>
     <% end %>
   </tbody>

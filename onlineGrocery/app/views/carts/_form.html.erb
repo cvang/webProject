@@ -20,10 +20,14 @@
     <%= f.hidden_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :quantity %><br>
-    <%= hidden_field_tag ':quantity', '1' %>
+    <% f.label :quantity %><br>
+    <%= f.hidden_field :quantity, :value => 1%>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<script type="text/javascript">
+        
+        document.getElementById("new_cart").submit();
+</script>
