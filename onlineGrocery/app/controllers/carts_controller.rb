@@ -33,18 +33,17 @@ class CartsController < ApplicationController
     @cart.check(@something)
     @cart.quantity = 1
     @existing_cart = Cart.find_by(product_id: @product.id)
-
-    if @existing_cart
-      @existing_cart.quantity += 1
-      @existing_cart.save
-      redirect_to products_url, notice: 'Item added to cart.'
-    else
-        if @cart.save
-        redirect_to products_url, notice: 'Item added to cart.'
-      else
-        redirect_to products_url, notice: 'Could not add item to cart.'
-      end
-    end
+        if @existing_cart && current_user.admin == false
+            @existing_cart.quantity += 1
+            @existing_cart.save
+            redirect_to products_url, notice: 'Item added to cart.'
+        else
+            if @cart.save && current_user.admin == false
+                redirect_to products_url, notice: 'Item added 1to cart.'
+            else
+                redirect_to products_url
+            end
+        end
   end
 
   # PATCH/PUT /carts/1

@@ -36,19 +36,13 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <center><b><%= product.name %></b><center><br>
             <%= image_tag image.filename, :size => "100x100" %><br>
-            <!-- < %= product.product_type %> -->
             &nbsp;&nbsp;&nbsp;&nbsp;
             <center><%= "$ #{product.price}" %><br><center>
-            <!-- < %= product.detail %> -->
-            <!--< %= link_to 'Show', product %> -->
             <% if current_user.admin == false %>
             &nbsp;&nbsp;&nbsp;&nbsp;
-                <!--%= render file: '/products/show' %-->
                 <center><div class="btn-group" role="group" aria-label="...">
                 <%= link_to "Add to Cart", product_path(product), :class => "btn btn-primary" %>
-                <!-- < %= render 'carts/form' %> -->
-                <!-- < %= link_to "Add" %> -->
-            </div><center>
+            </div></center>
             <% end %>
             <% if current_user.admin == true %>
                 <div class="btn-group" role="group" aria-label="...">

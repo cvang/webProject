@@ -14,11 +14,13 @@
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
+            <% if current_user.id == cart.user_id && current_user.admin == false%>
         <div class="list">
-            <% if current_user.id == cart.user_id %>
                 <td><%= cart.product.name %></td>
                 <td><center><%= "$ #{cart.product.price}" %><center></td>
-                <td><center><%= cart.quantity %></center></td>
+                <td><center>
+                        <%= cart.quantity %>
+                </center></td>
                 <div class="btn-group" role="group" aria-label="...">
                     <td><%= link_to 'Edit', edit_cart_path(cart), :class => "btn btn-primary" %></td>
                 </div>
@@ -31,10 +33,13 @@
     <% end %>
   </tbody>
 </table>
+      <hr>
 <div class="checkout">
     <% @total_sum = 0 %>
     <% @carts.each do |cart| %>
-        <% @total_sum += (cart.product.price * cart.quantity)%>
+        <% if current_user.id == cart.user_id && current_user.admin == false%>
+            <% @total_sum += (cart.product.price * cart.quantity)%>
+        <% end %>
     <% end %>
     <%= "Total Price: $#{@total_sum}" %>
 </div>
