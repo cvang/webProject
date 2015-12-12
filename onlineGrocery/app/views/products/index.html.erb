@@ -13,13 +13,12 @@
 </style>
 <br>
 <h1>Listing Products</h1>
-
 <br>
 
 <table>
   <tbody>
     <% @products.each do |product| %>
-        <% if (product.private == false && product.product_type == @p) || (product.private == false && product.product_type == @p2) || (product.private == false && @p3 == 3)%>
+        <% if (product.private == false && product.product_type == @p) || (product.private == false && product.product_type == @p2) || (product.private == false && @p3 == 3) || (@p == 0 && @p2 == 0 && @p3 == 0)%>
         <tr>
         <div class="something">
             <center><b><%= product.name %></b><center><br>

@@ -16,8 +16,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <!--li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li-->
-                <li><%= link_to "Fruits", root_url(:item1 => 1)  %></li>
-                <li><%= link_to "Vegetables", root_url(:item2 => 2) %></li>
+                <% if user_signed_in? %>
+                    <li><%= link_to "Fruits", root_url(:item1 => 1)  %></li>
+                    <li><%= link_to "Vegetables", root_url(:item2 => 2) %></li>
+                <% end %>
                 <!--
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -54,13 +56,21 @@
                             </li>
                         <% end %>
                         <% if user_signed_in? %>
-                            <li>
-                            <%= link_to "Account", user_path(current_user) %>
-                            </li>
+                            <% if current_user.admin == true %>
+                                <li>
+                                    <%= link_to "Admin Account", user_path(current_user) %>
+                                </li>
+                            <% else %>
+                                <li>
+                                    <%= link_to "Account", user_path(current_user) %>
+                                </li>
+                            <% end %>
                         <% end %>
                         <li>
                             <% if user_signed_in? %>
-                            <%= link_to "Cart", product_carts_path(current_user) %>
+                                <% if current_user.admin == false %>
+                                    <%= link_to "Cart", product_carts_path(current_user) %>
+                                <% end %>
                         <% end %>
                         </li>
                         <li>

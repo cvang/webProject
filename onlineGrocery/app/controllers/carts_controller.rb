@@ -31,9 +31,8 @@ class CartsController < ApplicationController
     @product = Product.find params[:product_id]
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
-    @something = @product.id
-    @cart.check(@something)
     @cart.quantity = 1
+
     @existing_cart = Cart.find_by(product_id: @product.id)
         if @existing_cart && current_user.admin == false
             @existing_cart.quantity += 1
