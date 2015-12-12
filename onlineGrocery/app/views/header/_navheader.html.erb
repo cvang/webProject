@@ -16,8 +16,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <!--li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li-->
-                <li><%= link_to "Fruits", root_url(:param1 => 1, method: :get)  %></li>
-                <li><%= link_to "Vegetables", root_url(:param2 => 2, method: :get) %></li>
+                <li><%= link_to "Fruits", root_url(:item1 => 1)  %></li>
+                <li><%= link_to "Vegetables", root_url(:item2 => 2) %></li>
                 <!--
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -65,7 +65,7 @@
                         </li>
                         <li>
                             <% if user_signed_in? %>
-                                <%= link_to "Home", root_url(:param3 => 3, method: :get)%>
+                                <%= link_to "Home", root_url(:item3 => 3)%>
                         <% end %>
                         </li>
 

@@ -41,12 +41,9 @@
             <center><b><%= product.name %></b><center><br>
             <%= image_tag product.filename, :size => "100x100" %><br>
             <center><%= "$ #{product.price}" %><br><center>
-            <% if current_user.admin == false %>
-                <%= link_to "Add to Cart", product_path(product), :class => "btn btn-primary" %>
-            <% end %>
             <% if current_user.admin == true %>
-                  <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-primary" %>
-                  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-primary"%>
+                  <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-warning" %>
+                  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-warning"%>
             <% end %>
         </div>
         </tr>

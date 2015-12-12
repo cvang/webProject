@@ -6,12 +6,12 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @users = User.all
-    param1 = params[:param1]
-    param2 = params[:param2]
-    param3 = params[:param3]
-    @p3 = param3.to_i
-    @p2 = param2.to_i
-    @p = param1.to_i
+    item1 = params[:item1]
+    item2 = params[:item2]
+    item3 = params[:item3]
+    @p3 = item3.to_i
+    @p2 = item2.to_i
+    @p = item1.to_i
   end
 
   def list
@@ -41,7 +41,6 @@ class ProductsController < ApplicationController
     @product.carts.each do |cart|
         car.user_id = current_user.id
     end
-    #@product.user_id = current_user.id
     @uploaded_io = params[:product][:uploaded_file]
     if @uploaded_io != nil
         File.open(Rails.root.join('public', 'images', @product.filename), 'wb') do |file|
@@ -50,7 +49,7 @@ class ProductsController < ApplicationController
     end
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to root_url(:item3 => 3), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -64,7 +63,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to root_url(:item3 => 3), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -78,7 +77,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to root_url(:item => 3), notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -39,18 +39,13 @@
     <% @carts.each do |cart| %>
       <tr>
             <% if current_user.id == cart.user.id && current_user.admin == false%>
-        <div class="list">
+            <div class="list">
                 <td><%= cart.product.name %></td>
                 <td><center><%= "$ #{cart.product.price}" %><center></td>
                 <td><center>
                         <%= cart.quantity %>
                 </center></td>
-                <!--<div class="btn-group" role="group" aria-label="...">
-                    <td>< %= link_to 'Edit', edit_cart_path(cart), :class => "btn btn-primary" %></td>
-                </div> -->
-                <div class="btn-group" role="group" aria-label="...">
                     <td><%= link_to 'Delete', cart, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %></td>
-                </div>
             <% end %>
         </div>
       </tr>
@@ -90,6 +85,7 @@
             <b>Country: </b>
             <%= address.country %><br>
         <% end %>
+        <% break %>
     <% end %>
 <% end %>
 </div>
@@ -105,6 +101,7 @@
                 <b>CVS:</b>
                 <%= "***" %><br>
             <% end %>
+            <% break %>
         <% end %>
     <% end %>
 </div>
@@ -115,6 +112,6 @@
 <br>
 <br>
 <div class="cle">
-    <%= link_to "Back", root_url, :class => "btn btn-primary" %>
+    <%= link_to "Back", root_url(:item3 => 3), :class => "btn btn-primary" %>
 </div>
 <!--%= link_to 'New Cart', new_cart_path %-->

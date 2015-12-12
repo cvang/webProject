@@ -31,7 +31,6 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        #format.html { redirect_to @address, notice: 'Address was successfully created.' }
         format.html { redirect_to user_url(@user), notice: 'Address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
       else
@@ -46,7 +45,6 @@ class AddressesController < ApplicationController
   def update
     respond_to do |format|
       if @address.update(address_params)
-       # format.html { redirect_to @address, notice: 'Address was successfully updated.' }
         format.html { redirect_to user_url(@address.user), notice: 'Address was successfully updated.' }
         format.json { render :show, status: :ok, location: @address }
       else
@@ -61,7 +59,6 @@ class AddressesController < ApplicationController
   def destroy
     @address.destroy
     respond_to do |format|
-      #format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
       format.html { redirect_to user_url(@address.user), notice: 'Address was successfully destroyed.' }
       format.json { head :no_content }
     end
