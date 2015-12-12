@@ -12,9 +12,6 @@ class ProductsController < ApplicationController
     @p3 = param3.to_i
     @p2 = param2.to_i
     @p = param1.to_i
-    @products.each do |product|
-        puts product.product_type
-    end
   end
 
   def list

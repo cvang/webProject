@@ -1,3 +1,8 @@
+<style>
+    body{
+        margin: 10px;
+    }
+</style>
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -27,7 +32,10 @@
   <div class="field">
     <%= f.file_field :uploaded_file%>
   </div>
+  <br>
   <div class="field">
+      <em>input 1 for fruit</em><br>
+      <em>input 2 for vegetable</em><br>
     <%= f.label :product_type %><br>
     <%= f.number_field :product_type %>
   </div>

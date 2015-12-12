@@ -18,9 +18,24 @@
 
 <table>
   <tbody>
-  <%= @param1 %>
     <% @products.each do |product| %>
-        <% if (product.private == false && product.product_type == @p) || (product.private == true && current_user.admin == true)%>
+        <% if (product.private == false && product.product_type == @p) || (product.private == false && product.product_type == @p2) || (product.private == false && @p3 == 3)%>
+        <tr>
+        <div class="something">
+            <center><b><%= product.name %></b><center><br>
+            <%= image_tag product.filename, :size => "100x100" %><br>
+            <center><%= "$ #{product.price}" %><br><center>
+            <% if current_user.admin == false %>
+                <%= link_to "Add to Cart", product_path(product), :class => "btn btn-primary" %>
+            <% end %>
+            <% if current_user.admin == true %>
+                  <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-primary" %>
+                  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-primary"%>
+            <% end %>
+        </div>
+        </tr>
+        <% end %>
+        <% if (product.private == true && current_user.admin == true)%>
         <tr>
         <div class="something">
             <center><b><%= product.name %></b><center><br>

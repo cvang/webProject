@@ -15,30 +15,30 @@ users = User.create([
 ])
 
 #note to self
-# 0 = vegetable
+# 2 = vegetable
 # 1 = furit
 products = Product.create([
     {name: "banana", product_type: 1, price: 1.00, detail: "Crazy Banana", filename: "banana.jpg", private: "f:"},
-    {name: "broccoli",product_type: 0, price: 1.00, detail: "Crazy Broccoli", filename: "broccoli.jpg", private: "f"},
-    {name: "cabbage", product_type: 0, price: 1.00, detail: "Crazy Cabbage", filename: "cabbage.png", private: "f"},
-    {name: "carrot", product_type: 0, price: 1.00, detail: "Crazy Carrot", filename: "carrot.jpg", private: "f"},
-    {name: "cilantro", product_type: 0, price: 1.00, detail: "Crazy Cilantro", filename: "cilantro.jpg", private: "f"},
-    {name: "fuji apple", product_type: 0, price: 1.00, detail: "Crazy Fuji-Apple", filename: "fuji-apple.jpeg", private: "f"},
+    {name: "broccoli",product_type: 2, price: 1.00, detail: "Crazy Broccoli", filename: "broccoli.jpg", private: "f"},
+    {name: "cabbage", product_type: 2, price: 1.00, detail: "Crazy Cabbage", filename: "cabbage.png", private: "f"},
+    {name: "carrot", product_type: 2, price: 1.00, detail: "Crazy Carrot", filename: "carrot.jpg", private: "f"},
+    {name: "cilantro", product_type: 2, price: 1.00, detail: "Crazy Cilantro", filename: "cilantro.jpg", private: "f"},
+    {name: "fuji apple", product_type: 2, price: 1.00, detail: "Crazy Fuji-Apple", filename: "fuji-apple.jpeg", private: "f"},
     {name: "grape", product_type: 1, price: 1.00, detail: "Crazy Grape", filename: "grape.jpg", private: "f"},
-    {name: "green bell pepper", product_type: 0, price: 1.00, detail: "Crazy Green-bell-pepper", filename: "green-bell-pepper.jpg", private: "f"},
-    {name: "green onion", product_type: 0, price: 1.00, detail: "Crazy Green-Onion", filename: "green-onion.png", private: "f"},
+    {name: "green bell pepper", product_type: 2, price: 1.00, detail: "Crazy Green-bell-pepper", filename: "green-bell-pepper.jpg", private: "f"},
+    {name: "green onion", product_type: 2, price: 1.00, detail: "Crazy Green-Onion", filename: "green-onion.png", private: "f"},
     {name: "orange", product_type: 1, price: 1.00, detail: "Crazy Orange", filename: "orange.jpg", private: "f"},
     {name: "peach", product_type: 1, price: 1.00, detail: "Crazy Peach", filename: "peach.jpg", private: "f"},
     {name: "pineapple", product_type: 1, price: 1.00, detail: "Crazy Pineapple", filename: "pineapple.jpg", private: "f"},
     {name: "plum", product_type: 1, price: 1.00, detail: "Crazy Plum", filename: "plum.jpg", private: "f"},
     {name: "pomegranate", product_type: 1, price: 1.00, detail: "Crazy Pomegranate", filename: "pomegranate.jpg", private: "f"},
     {name: "potatoe", product_type: 1, price: 1.00, detail: "Crazy Potate", filename: "potatoe.jpeg", private: "f"},
-    {name: "red bell pepper", product_type: 0, price: 1.00, detail: "Crazy Red-bell-pepper", filename: "red-bell-pepper.jpg", private: "f"},
-    {name: "snap peas", product_type: 0, price: 1.00, detail: "Crazy snap-Peas", filename: "snap-Peas.jpg", private: "f"},
+    {name: "red bell pepper", product_type: 2, price: 1.00, detail: "Crazy Red-bell-pepper", filename: "red-bell-pepper.jpg", private: "f"},
+    {name: "snap peas", product_type: 2, price: 1.00, detail: "Crazy snap-Peas", filename: "snap-Peas.jpg", private: "f"},
     {name: "strawberry", product_type: 1, price: 1.00, detail: "Crazy Strawberry", filename: "strawberry.jpg", private: "f"},
     {name: "watermelon", product_type: 1, price: 1.00, detail: "Crazy Watermelon", filename: "tomotoe.jpg", private: "f"},
-    {name: "tomato", product_type: 0, price: 1.00, detail: "Crazy Tomato", filename: "watermelon.jpg", private: "f"},
-    {name: "zucchini", product_type: 0, price: 1.00, detail: "Crazy Zucchini", filename: "zucchini.jpg", private: "f"}
+    {name: "tomato", product_type: 2, price: 1.00, detail: "Crazy Tomato", filename: "watermelon.jpg", private: "f"},
+    {name: "zucchini", product_type: 2, price: 1.00, detail: "Crazy Zucchini", filename: "zucchini.jpg", private: "f"}
 ])
 
 #images = Image.create([
