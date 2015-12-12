@@ -5,6 +5,7 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @carts = Cart.all
+    @users = User.all
   end
 
   # GET /carts/1
@@ -26,6 +27,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
+    if current_user.admin == false
     @product = Product.find params[:product_id]
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
@@ -38,12 +40,17 @@ class CartsController < ApplicationController
             @existing_cart.save
             redirect_to products_url, notice: 'Item added to cart.'
         else
-            if @cart.save && current_user.admin == false
-                redirect_to products_url, notice: 'Item added 1to cart.'
+            if current_user.admin == false
+                if @cart.save
+                    redirect_to products_url, notice: 'Item added 1to cart.'
+                end
             else
                 redirect_to products_url
             end
         end
+  else
+                redirect_to products_url
+  end
   end
 
   # PATCH/PUT /carts/1

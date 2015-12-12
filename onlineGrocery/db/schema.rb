@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211063503) do
+ActiveRecord::Schema.define(version: 20151212033254) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "line_1_building"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20151211063503) do
 
   add_index "carts", ["product_id"], name: "index_carts_on_product_id"
   add_index "carts", ["user_id"], name: "index_carts_on_user_id"
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.integer  "card_numbers", limit: 8
+    t.integer  "expire"
+    t.integer  "cvs"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "credit_cards", ["user_id"], name: "index_credit_cards_on_user_id"
 
   create_table "images", force: :cascade do |t|
     t.string   "filename"

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card_numbers: 1
+  expire: 1
+  cvs: 1
+  user_id: 
+
+two:
+  card_numbers: 1
+  expire: 1
+  cvs: 1
+  user_id: 

@@ -18,6 +18,8 @@
     <%= current_user.name %><br>
     <b>Last Name: </b>
     <%= current_user.last_name %><br>
+    <b>Email: </b>
+    <%= current_user.email %><br>
     <b>Phone: </b>
     <%= current_user.phone %><br>
 </div>
@@ -27,7 +29,8 @@
     <% if !address.new_record? %>
         <tr>
             <div class="something">
-                <b>Line_1_building: </b>
+
+            <b>Line_1_building: </b>
             <%= address.line_1_building %><br>
             <b>Line_2_street: </b>
             <%= address.line_2_street %><br>
@@ -48,9 +51,30 @@
 <% end %>
 </tbody>
 </table>
+<table>
+    <tbody>
+        <% @user.credit_cards.each do |credit_card| %>
+            <% if !credit_card.new_record? %>
+                <tr>
+                    <div class="something2">
+                        <b>Credit Card Number: </b>
+                        <%= credit_card.card_numbers %><br>
+                        <b>Expire: </b>
+                        <%= credit_card.expire %><br>
+                        <b>CVS: </b>
+                        <%= credit_card.cvs %><br>
+                    </div>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>
 <h4> Add Address</h4>
 <%= render 'addresses/form' %>
-
 <br>
+<h4> Add Credit Card </h4>
+<%= render 'credit_cards/form' %>
+<br>
+
 <%= link_to "Edit Account", edit_user_registration_path %> |
 <%= link_to "Back", root_url %>

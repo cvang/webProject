@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Carts</h1>
-
 <table>
   <thead>
     <tr>
@@ -14,7 +13,7 @@
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
-            <% if current_user.id == cart.user_id && current_user.admin == false%>
+            <% if current_user.id == cart.user.id && current_user.admin == false%>
         <div class="list">
                 <td><%= cart.product.name %></td>
                 <td><center><%= "$ #{cart.product.price}" %><center></td>
@@ -41,9 +40,48 @@
             <% @total_sum += (cart.product.price * cart.quantity)%>
         <% end %>
     <% end %>
-    <%= "Total Price: $#{@total_sum}" %>
+    <% if @total_sum != 0 %>
+    <b><%= "TAX 8.25% " %></b><br>
+    <% @total_sum *= 1.0825 %>
+    <% @total_sum = @total_sum.round(2) %>
+    <b><%= "Total Price: $#{@total_sum}" %></b><br>
+<% end %>
 </div>
 <br>
+<hr>
+<h3>Deliver Address</h3>
+<div class="addy">
+<% @users.each do |user| %>
+    <% user.addresses.each do |address| %>
+        <% if current_user.id == user.id %>
+            <%= address.line_1_building %><br>
+            <%= address.line_2_street %><br>
+            <%= address.city %><br>
+            <%= address.zipcode %><br>
+            <%= address.country %><br>
+        <% end %>
+    <% end %>
+<% end %>
+</div>
+    <h3>Payment Card</h3>
+<div class="credy">
+    <% @users.each do |user| %>
+        <% user.credit_cards.each do |credit_card| %>
+            <% if current_user.id == user.id %>
+                <b>Card Number: </b>
+                <%= credit_card.card_numbers %><br>
+                <b>Expire: </b>
+                <%= credit_card.expire %><br>
+                <b>CVS</b>
+                <%= credit_card.cvs %><br>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>
 
+
+
+<br>
+<br>
 <%= link_to "Back", root_url %>
 <!--%= link_to 'New Cart', new_cart_path %-->

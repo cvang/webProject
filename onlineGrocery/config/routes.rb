@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, :only => [:show, :edit, :update, :create] do 
       resources :addresses, shallow: true
+      resources :credit_cards, shallow: true
   end
   resources :products do
     resources :carts, shallow: true
