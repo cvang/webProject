@@ -38,18 +38,18 @@ class CartsController < ApplicationController
         if @existing_cart && current_user.admin == false
             @existing_cart.quantity += 1
             @existing_cart.save
-            redirect_to products_url, notice: 'Item added to cart.'
+            redirect_to products_url(:item3 => 3), notice: 'Item added to cart.'
         else
             if current_user.admin == false
                 if @cart.save
-                    redirect_to products_url, notice: 'Item added 1to cart.'
+                    redirect_to products_url(:item3 => 3), notice: 'Item added 1to cart.'
                 end
             else
-                redirect_to products_url
+                redirect_to products_url(:item3 => 3)
             end
         end
   else
-                redirect_to products_url
+                redirect_to products_url(:item3 => 3)
   end
   end
 
