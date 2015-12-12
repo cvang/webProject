@@ -70,9 +70,7 @@
     <% @total_sum *= 1.0825 %>
     <% @total_sum = @total_sum.round(2) %>
     <b><%= "Total Price: $#{@total_sum}" %></b><br>
-    <div class="btn-group" role="group" aria-label="...">
         <%= link_to "Check Out", checkout_index_path, :class => "btn btn-primary"%>
-    </div>
 </div>
 <br>
 <hr>

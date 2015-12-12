@@ -6,6 +6,15 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @users = User.all
+    param1 = params[:param1]
+    param2 = params[:param2]
+    param3 = params[:param3]
+    @p3 = param3.to_i
+    @p2 = param2.to_i
+    @p = param1.to_i
+    @products.each do |product|
+        puts product.product_type
+    end
   end
 
   def list
