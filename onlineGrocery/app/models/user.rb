@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true
   validates :last_name, presence: true
+  validates :phone, presence: true
   belongs_to :product
 end

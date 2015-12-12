@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212033254) do
+ActiveRecord::Schema.define(version: 20151212104802) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "line_1_building"
@@ -49,16 +49,6 @@ ActiveRecord::Schema.define(version: 20151212033254) do
 
   add_index "credit_cards", ["user_id"], name: "index_credit_cards_on_user_id"
 
-  create_table "images", force: :cascade do |t|
-    t.string   "filename"
-    t.boolean  "private"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "images", ["product_id"], name: "index_images_on_product_id"
-
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "product_type"
@@ -68,6 +58,8 @@ ActiveRecord::Schema.define(version: 20151212033254) do
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.integer  "cart_id"
+    t.string   "filename"
+    t.boolean  "private"
   end
 
   add_index "products", ["cart_id"], name: "index_products_on_cart_id"

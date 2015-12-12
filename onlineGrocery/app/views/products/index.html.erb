@@ -31,39 +31,27 @@
   -->
 
   <tbody>
-  <% @images.each do |image| %>
     <% @products.each do |product| %>
-        <% if image.id == product.id && image.private == false %>
+        <% if product.private == false %>
         <tr>
         <div class="something">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <center><b><%= product.name %></b><center><br>
-            <%= image_tag image.filename, :size => "100x100" %><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            <%= image_tag product.filename, :size => "100x100" %><br>
             <center><%= "$ #{product.price}" %><br><center>
             <% if current_user.admin == false %>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-                <center><div class="btn-group" role="group" aria-label="...">
                 <%= link_to "Add to Cart", product_path(product), :class => "btn btn-primary" %>
-            </div></center>
             <% end %>
             <% if current_user.admin == true %>
-                <div class="btn-group" role="group" aria-label="...">
                         <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-primary" %>
-                </div>
-                <div class="btn-group" role="group" aria-label="...">
                         <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-primary"%>
-                </div>
         <% end %>
         </div>
         </tr>
         <% end %>
     <% end %>
-<% end %>
   </tbody>
 </table>
-
 <br>
 <% if current_user.admin == true %>
-<%= link_to 'New Product', new_product_path %>
+    <%= link_to 'New Product', new_product_path, :class => "btn btn-primary" %>
 <% end %>

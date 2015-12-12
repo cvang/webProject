@@ -5,8 +5,12 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @images = Image.all
     @users = User.all
+  end
+
+  def list
+        @get_product_list = Array.new
+        @products = Product.all
   end
 
   # GET /products/1
@@ -31,7 +35,13 @@ class ProductsController < ApplicationController
     @product.carts.each do |cart|
         car.user_id = current_user.id
     end
-
+    #@product.user_id = current_user.id
+    @uploaded_io = params[:product][:uploaded_file]
+    if @uploaded_io != nil
+        File.open(Rails.root.join('public', 'images', @product.filename), 'wb') do |file|
+            file.write(@uploaded_io.read)
+        end
+    end
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -75,6 +85,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :product_type, :price, :detail)
+      params.require(:product).permit(:name, :product_type, :price, :detail, :filename, :private)
     end
 end

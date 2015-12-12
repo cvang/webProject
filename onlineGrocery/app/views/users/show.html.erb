@@ -116,10 +116,12 @@
 <%= render 'addresses/form' %>
 </div>
 <br>
+<% if current_user.admin == false %>
 <div class="rR">
     <h4> Add Credit Card </h4>
 <%= render 'credit_cards/form' %>
 </div>
+<% end %>
 <br>
 <div class="don">
     <%= link_to "Edit Account", edit_user_registration_path, :class => "btn btn-primary"%>
