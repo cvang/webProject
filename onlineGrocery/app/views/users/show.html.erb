@@ -1,14 +1,64 @@
 <%if current_user.admin == true %>
-    <h2>Admin Account</h2>
+    <center><h2>Admin Account</h2></center>
 <% else %>
-    <h2>My Account</h2>
+    <center><h2>My Account</h2></center>
 <% end %>
 
 <style>
-    .something{
-        display: inline-block;
+    body{
         margin: 10px;
-        margin-right: 20px;
+    }
+    .account{
+        height: 200px;
+        float: left;
+        padding: 10px;
+        width: 20%;
+        margin: 10px;
+        box-shadow: 0 0 5px #999;
+        border: 6 solid #fff;
+    }
+    .leftDiv{
+        height: 200px;
+        float: left;
+        padding: 10px;
+        width: 20%;
+        margin: 10px;
+        box-shadow: 0 0 5px #999;
+        border: 6 solid #fff;
+    }
+
+    .oky{
+        float: left;
+        width: 20%;
+        padding: 10px;
+        height: 200px;
+        margin: 10px;
+        box-shadow: 0 0 5px #999;
+        border: 6 solid #fff;
+    }
+
+    .renLeft{
+        clear: both;
+        float: left;
+        width: 20%;
+        padding: 10px;
+        height: 420px;
+        margin: 10px;
+        box-shadow: 0 0 5px #999;
+        border: 6 solid #fff;
+    }
+
+    .rR{
+        float: left;
+        width: 20%;
+        padding: 10px;
+        height: 420px;
+        margin: 10px;
+        box-shadow: 0 0 5px #999;
+        border: 6 solid #fff;
+    }
+    .don{
+        clear: both;
     }
 </style>
 <div class="account">
@@ -23,58 +73,55 @@
     <b>Phone: </b>
     <%= current_user.phone %><br>
 </div>
-<table>
-    <tbody>
 <% @user.addresses.each do |address| %>
     <% if !address.new_record? %>
-        <tr>
-            <div class="something">
-
-            <b>Line_1_building: </b>
-            <%= address.line_1_building %><br>
-            <b>Line_2_street: </b>
-            <%= address.line_2_street %><br>
-            <b>City: </b>
-            <%= address.city %><br>
-            <b>State: </b>
-            <%= address.state %><br>
-            <b>Zipcode: </b>
-            <%= address.zipcode %><br>
-            <b>Country: </b>
-            <%= address.country %><br>
-            <%= link_to "Edit", edit_address_path(address) %> |
-            <%= link_to 'Destroy', address, method: :delete, data: {confirm: 'Are you sure?' } %>
-
-        </div>
-        </tr>
+            <div class="leftDiv">
+                <b>Line_1_building: </b>
+                <%= address.line_1_building %><br>
+                <b>Line_2_street: </b>
+                <%= address.line_2_street %><br>
+                <b>City: </b>
+                <%= address.city %><br>
+                <b>State: </b>
+                <%= address.state %><br>
+                <b>Zipcode: </b>
+                <%= address.zipcode %><br>
+                <b>Country: </b>
+                <%= address.country %><br>
+                <center>
+                    <%= link_to "Edit", edit_address_path(address), :class => "btn btn-primary"%> 
+                    <%= link_to 'Destroy', address, method: :delete, data: {confirm: 'Are you sure?' }, :class => "btn btn-primary" %>
+                </center>
+            </div>
     <% end %>
 <% end %>
-</tbody>
-</table>
-<table>
-    <tbody>
         <% @user.credit_cards.each do |credit_card| %>
             <% if !credit_card.new_record? %>
-                <tr>
-                    <div class="something2">
+                <div class="oky">
                         <b>Credit Card Number: </b>
                         <%= credit_card.card_numbers %><br>
                         <b>Expire: </b>
                         <%= credit_card.expire %><br>
                         <b>CVS: </b>
-                        <%= credit_card.cvs %><br>
+                        <%= "***" %><br>
+                        <br>
+                        <br>
+                        <%= link_to "Edit", edit_credit_card_path(credit_card), :class => "btn btn-primary" %>
+                        <%= link_to "Delete", credit_card, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-primary" %>
                     </div>
-                </tr>
             <% end %>
         <% end %>
-    </tbody>
-</table>
+<div class="renLeft">
 <h4> Add Address</h4>
 <%= render 'addresses/form' %>
+</div>
 <br>
-<h4> Add Credit Card </h4>
+<div class="rR">
+    <h4> Add Credit Card </h4>
 <%= render 'credit_cards/form' %>
+</div>
 <br>
-
-<%= link_to "Edit Account", edit_user_registration_path %> |
-<%= link_to "Back", root_url %>
+<div class="don">
+    <%= link_to "Edit Account", edit_user_registration_path, :class => "btn btn-primary"%>
+    <%= link_to "Back", root_url, :class => "btn btn-primary"%>
+</div>

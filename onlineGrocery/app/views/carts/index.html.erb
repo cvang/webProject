@@ -1,4 +1,29 @@
 <p id="notice"><%= notice %></p>
+<style>
+    body{
+        padding: 10px;
+    }
+    .addy{
+        height: 200px;
+        float: left;
+        padding: 10px;
+        width: 40%;
+        margin: 10px;
+        border: 6 solid #fff;
+    }
+    .creddy{
+        height: 200px;
+        float: left;
+        padding: 10px;
+        width: 40%;
+        margin: 10px;
+        border: 6 solid #fff;
+    }
+
+    .cle{
+        clear: both;
+    }
+</style>
 
 <h1>Listing Carts</h1>
 <table>
@@ -20,9 +45,9 @@
                 <td><center>
                         <%= cart.quantity %>
                 </center></td>
-                <div class="btn-group" role="group" aria-label="...">
-                    <td><%= link_to 'Edit', edit_cart_path(cart), :class => "btn btn-primary" %></td>
-                </div>
+                <!--<div class="btn-group" role="group" aria-label="...">
+                    <td>< %= link_to 'Edit', edit_cart_path(cart), :class => "btn btn-primary" %></td>
+                </div> -->
                 <div class="btn-group" role="group" aria-label="...">
                     <td><%= link_to 'Delete', cart, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %></td>
                 </div>
@@ -45,26 +70,33 @@
     <% @total_sum *= 1.0825 %>
     <% @total_sum = @total_sum.round(2) %>
     <b><%= "Total Price: $#{@total_sum}" %></b><br>
-<% end %>
+    <div class="btn-group" role="group" aria-label="...">
+        <%= link_to "Check Out", checkout_index_path, :class => "btn btn-primary"%>
+    </div>
 </div>
 <br>
 <hr>
-<h3>Deliver Address</h3>
 <div class="addy">
+<h3>Deliver Address</h3>
 <% @users.each do |user| %>
     <% user.addresses.each do |address| %>
         <% if current_user.id == user.id %>
+            <b>Building: </b>
             <%= address.line_1_building %><br>
+            <b>Street: </b>
             <%= address.line_2_street %><br>
+            <b>City: </b>
             <%= address.city %><br>
+            <b>Zipcode: </b>
             <%= address.zipcode %><br>
+            <b>Country: </b>
             <%= address.country %><br>
         <% end %>
     <% end %>
 <% end %>
 </div>
+<div class="creddy">
     <h3>Payment Card</h3>
-<div class="credy">
     <% @users.each do |user| %>
         <% user.credit_cards.each do |credit_card| %>
             <% if current_user.id == user.id %>
@@ -72,16 +104,19 @@
                 <%= credit_card.card_numbers %><br>
                 <b>Expire: </b>
                 <%= credit_card.expire %><br>
-                <b>CVS</b>
-                <%= credit_card.cvs %><br>
+                <b>CVS:</b>
+                <%= "***" %><br>
             <% end %>
         <% end %>
     <% end %>
 </div>
 
 
+<% end %>
 
 <br>
 <br>
-<%= link_to "Back", root_url %>
+<div class="cle">
+    <%= link_to "Back", root_url, :class => "btn btn-primary" %>
+</div>
 <!--%= link_to 'New Cart', new_cart_path %-->

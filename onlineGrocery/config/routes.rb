@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :checkout, :only =>[:show, :edit, :update, :create, :index]
   resources :images
   devise_for :users
   resources :users, :only => [:show, :edit, :update, :create] do 
