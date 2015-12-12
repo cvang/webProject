@@ -14,6 +14,7 @@ users = User.create([
 
 ])
 
+
 #note to self
 # 2 = vegetable
 # 1 = furit
@@ -41,32 +42,16 @@ products = Product.create([
     {name: "zucchini", product_type: 2, price: 1.00, detail: "Crazy Zucchini", filename: "zucchini.jpg", private: "f"}
 ])
 
-#images = Image.create([
-#    {filename: "banana.jpg", private: "f", product_id: 1 },
-#    {filename: "broccoli.jpg", private: "f", product_id: 2},
-#    {filename: "cabbage.png", private: "f", product_id: 3},
-#    {filename: "carrot.jpg", private: "f", product_id: 4},
-#    {filename: "cilantro.jpg", private: "f", product_id: 5},
-#    {filename: "fuji-apple.jpeg", private: "f", product_id: 6},
-#    {filename: "grape.jpg", private: "f", product_id: 7 },
-#    {filename: "green-bell-pepper.jpg", private: "f", product_id: 8},
-#    {filename: "green-onion.png", private: "f", product_id: 9},
-#    {filename: "orange.jpg", private: "f", product_id: 10 },
-#    {filename: "peach.jpg", private: "f", product_id: 11},
-#    {filename: "pineapple.jpg", private: "f", product_id: 12 },
-#    {filename: "plum.jpg", private: "f", product_id: 13 },
-#    {filename: "pomegranate.jpg", private: "f", product_id: 14},
-#    {filename: "potatoe.jpeg", private: "f", product_id: 15},
-#    {filename: "red-bell-pepper.jpg", private: "f", product_id: 16},
-#    {filename: "snap-Peas.jpg", private: "f", product_id: 17},
-#    {filename: "strawberry.jpg", private: "f", product_id: 18},
-#    {filename: "tomotoe.jpg", private: "f", product_id: 19},
-#    {filename: "watermelon.jpg", private: "f", product_id: 20},
-#    {filename: "zucchini.jpg", private: "f", product_id: 21}
-#
-#])
 
-address = Address.create([
-    {line_1_building: "50", line_2_street: "something ave", city: "Chico", country: "US", user_id: 1, state: "CA", zipcode: 95926}
+addresses = Address.create([
+    {line_1_building: "50", line_2_street: "some ave", city: "Chico", country: "US", user_id: 1, state: "CA", zipcode: 95926},
+    {line_1_building: "1555", line_2_street: "Lupin ave", city: "Chico", country: "US", user_id: 2, state: "CA", zipcode: 95972},
+    {line_1_building: "780", line_2_street: "First ave", city: "Chico", country: "US", user_id: 3, state: "CA", zipcode: 95972},
+    {line_1_building: "950", line_2_street: "Last ave", city: "Chico", country: "US", user_id: 4, state: "CA", zipcode: 95972}
+])
 
+credit_cards = CreditCard.create([
+    {card_numbers: 1234567890098765, expire: 102018, cvs: 888, user_id: 2},
+    {card_numbers: 5432167890098765, expire: 122030, cvs: 777, user_id: 3},
+    {card_numbers: 5645645679873023, expire: 112099, cvs: 000 , user_id: 4}
 ])
